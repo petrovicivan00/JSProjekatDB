@@ -63,10 +63,10 @@ io.on('connection', socket => {
     socket.on('error', err => socket.emit('error', err.message) );
 });
 
-mongoose.connect(process.env.MONGO)
+mongoose.connect("mongodb://localhost:27017/MyMovies")
         .then(() => console.log("DB Connection Successfull"))
         .catch(err => console.log(err));
 
-server.listen( process.env.PORT | 3000, () => {
+server.listen( process.env.PORT || 3000, () => {
     console.log("Backend server is running on port " + process.env.PORT);
 });
